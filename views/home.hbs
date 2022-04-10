@@ -1,8 +1,12 @@
-<h1>Hola desde Home</h1>
+<h1>Agrege sus URLs</h1>
+<img  src="https://images.emojiterra.com/google/android-11/512px/1f424.png" width="50px" alt="Imagen de Pollito">
 
+{{>Form}}
+<input type="hidden" name="_csrf" value="{{csrfToken}}" />
 {{#each urls }}
 
   {{> Card item = this}}
 
 {{/each}}
+
 

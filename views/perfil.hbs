@@ -1,0 +1,38 @@
+<h1 class="text-center">{{ user.userName }}</h1>
+<p class="text-center">Edita aqui tu perfil</p>
+<div class="my-5 text-center">
+
+{{#if imagen}}
+
+ <img class="rounded-circle"  src="/img/perfiles/{{imagen}}" alt="">
+{{else}}
+ <img class="rounded-circle"  src="/img/perfiles/perfil.jpg" alt="">
+{{/if}}
+
+
+    
+    
+</div>
+
+
+<form action="/perfil?_csrf={{csrfToken}}" method="post" enctype="multipart/form-data">
+
+
+    <input class="form-control form-control-sm" id="formFileSm" type="file" name="myFile">
+    <button class="btn btn-dark my-3">Cambiar Img de Perfil</button>
+ 
+ 
+</form> 
+
+ 
+<!-- 
+        <!--<input type="hidden" name="_csrf" value="{{csrfToken}}"/>     esa es la forma en como funciona, poniendolo como una query en la equiquerta del formulario       
+
+"/img/perfiles/perfil.jpg" 
+
+
+
+
+
+
+ -->

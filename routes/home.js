@@ -1,20 +1,36 @@
 const express = require("express");
-const { restart } = require("nodemon");
+//const { restart } = require("nodemon");
+const { 
+    leerUrls, 
+    agregarUrl, 
+    eliminarUrl, 
+    editarUrlForm, 
+    editarUrl, 
+    redireccionamiento,
+} = require("../controllers/homeController");
+const { 
+    formPerfil, 
+    editarFotoPerfil 
+} = require("../controllers/perfilController");
+const validarURL = require("../middlewares/urlValida");
+const verificarUser = require("../middlewares/verificarUser");
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    const urls = [
-        {origin: "www.google.com/bluuweb1", shortURL: "Tarjeta #1"},
-        {origin: "www.google.com/bluuweb2", shortURL: "Tarjeta #2"},
-        {origin: "www.google.com/bluuweb3", shortURL: "Tarjeta #3"},
-        {origin: "www.google.com/bluuweb1", shortURL: "Tarjeta #4"},
-        {origin: "www.google.com/bluuweb2", shortURL: "Tarjeta #5"},
-        {origin: "www.google.com/bluuweb3", shortURL: "Tarjeta #6"}
-    ];
-    res.render("home", {urls:urls});
-})
+router.get("/", verificarUser, leerUrls);
+router.post("/", verificarUser, validarURL, agregarUrl);
+router.get("/eliminar/:id", verificarUser, eliminarUrl);
+router.get("/editar/:id", verificarUser, editarUrlForm);
+router.post("/editar/:id", verificarUser, validarURL, editarUrl);
 
 
 
-module.exports = router
+router.get("/perfil", verificarUser, formPerfil);
+router.post("/perfil", verificarUser, editarFotoPerfil);
+
+
+ 
+
+router.get("/:shortURL", redireccionamiento);
+module.exports = router; 
 
