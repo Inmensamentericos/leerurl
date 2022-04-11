@@ -23,7 +23,9 @@ const corsOptions = {
 };
 
 
-app.use(cors())
+app.use(cors());
+
+app.use("trust proxy", 1);
 
 app.use(
 
