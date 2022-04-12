@@ -62,7 +62,7 @@ const registerUser = async (req, res) => {
       <p>Bienvenido al sistema automatizado de url y notas</p>
       <br> 
       <p>Estas proximo a vivir una gran aventura <b>URL NICE<b></p>
-      <a href=${process.env.PATHHEROKU || 'http://localhost:5000'}auth/confirmar/${user.tokenConfirm}">Verifica tu cuenta aqui</a>`
+      <a href=${process.env.PATHHEROKU || "http://localhost:5000"}auth/confirmar/${user.tokenConfirm}">Verifica tu cuenta aqui</a>`
     });
 
 
